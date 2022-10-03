@@ -8,7 +8,7 @@
       <div class="card-title-group align-start mb-2">
         <div class="card-title">
             <h6 class="title">Create Data User Login</h6>
-              <p>Pelase Entri User Login for your transaction.</p> 
+              <p>Please Entri User Login for your transaction.</p> 
         </div>
         <div class="card-tools">
             <em class="card-hint icon ni ni-help-fill" data-bs-toggle="tooltip" data-bs-placement="left" title="Revenue from subscription"></em>
