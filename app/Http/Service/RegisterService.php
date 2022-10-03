@@ -22,8 +22,8 @@ class RegisterService extends Controller
     private $registerRepository;
 
     public function __construct(
-        RegisterRepositoryImpl $registerRepository )
-    {
+        RegisterRepositoryImpl $registerRepository
+    ) {
         $this->registerRepository = $registerRepository;
     }
 
@@ -43,7 +43,7 @@ class RegisterService extends Controller
             "id_distrits" => "required",
             "name_villages" => "required",
             "id_villages" => "required",
-            "typemember" => "required", 
+            "typemember" => "required",
             'captcha' => ['required', 'captcha'],
             //]
             // ,[
@@ -53,19 +53,19 @@ class RegisterService extends Controller
         try {
             // Db Transaction
             DB::beginTransaction();
-            if($request->typemember == "mitra" ){
+            if ($request->typemember == "mitra") {
                 if ($request->merchant_name == null) {
                     return redirect('register')->with('error', "Silahkan Masukan Mitra Name.");
                 }
                 if ($request->merchant_person == null) {
                     return redirect('register')->with('error', "Silahkan Masukan Contact Person Mitra.");
                 }
-            }   
-                $this->registerRepository->insertData($request);
-                DB::commit();
-                $details = $request; 
-                Mail::to($request->email)->send(new \App\Mail\RegisterMail($details));
-                return redirect('registersuccess')->with('success', 'Your Application under Process for Varification. !');
+            }
+            $this->registerRepository->insertData($request);
+            DB::commit();
+            $details = $request;
+            Mail::to($request->email)->send(new \App\Mail\RegisterMail($details));
+            return redirect('registersuccess')->with('success', 'Your Application under Process for Varification. !');
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
@@ -102,7 +102,7 @@ class RegisterService extends Controller
     {
         // validate 
         $request->validate([
-            "id" => "required", 
+            "id" => "required",
             //]
             // ,[
             //     'name.required' =>'Nama Salah',
@@ -111,54 +111,53 @@ class RegisterService extends Controller
         try {
             // Db Transaction
             DB::beginTransaction();
-            if($request->stauses <> "Unconfirmed"){
-                return redirect('dashboard/verification')->with('failed', 'Id : ' . $request->id .', Status Sudah tidak Unconfirmed, Edit dibatalkan !');
-            }else{
+            if ($request->stauses <> "Unconfirmed") {
+                return redirect('dashboard/verification')->with('failed', 'Id : ' . $request->id . ', Status Sudah tidak Unconfirmed, Edit dibatalkan !');
+            } else {
                 $this->registerRepository->updateconfirmData($request);
                 DB::commit();
                 $details = $request;
                 Mail::to($request->emails)->send(new \App\Mail\ConfirmationMail($details));
                 return redirect('dashboard/verification')->with('success', 'Application Confirmed successfully !!!');
-                
             }
-            
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
             return redirect('dashboard/verification')->with('failed', $e->getMessage());
         }
     }
-    public function confirmationRegistrationFinish(Request $request){
+    public function confirmationRegistrationFinish(Request $request)
+    {
         $request->validate([
             "id_f" => "required",
             "identitasid" => "required",
             "dobplace" => "required",
             "dob" => "required",
             "nama_bank" => "required",
-            "no_rekening" => "required", 
+            "no_rekening" => "required",
             "name_rekening_owner" => "required",
             'filektp' => 'required|image|file',
             'filestnk' => 'required|image|file',
-            'filesk' => 'required|image|file', 
+            'filesk' => 'required|image|file',
         ]);
 
         try {
             // Db Transaction
-                DB::beginTransaction(); 
-                $this->registerRepository->updateconfirmRegistrationFinal($request);
-                DB::commit(); 
-                return redirect('verificationregistration/' . $request->id_f)->with('success', 'Application Send  successfully !!!'); 
+            DB::beginTransaction();
+            $this->registerRepository->updateconfirmRegistrationFinal($request);
+            DB::commit();
+            return redirect('verificationregistration/' . $request->id_f)->with('success', 'Application Send  successfully !!!');
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
-            return redirect('verificationregistration/'. $request->id_f)->with('failed', $e->getMessage());
+            return redirect('verificationregistration/' . $request->id_f)->with('failed', $e->getMessage());
         }
     }
     public function finishedRegistration(Request $request)
     {
         // validate 
         $request->validate([
-            "id_f" => "required", 
+            "id_f" => "required",
             //]
             // ,[
             //     'name.required' =>'Nama Salah',
@@ -169,30 +168,30 @@ class RegisterService extends Controller
             DB::beginTransaction();
             if ($request->stauses_f <> "Generating") {
                 return redirect('dashboard/verification')->with('failed', 'Id : ' . $request->id . ', Status Sudah tidak Generating, Edit dibatalkan !');
-            } else { 
+            } else {
                 $stuff = new StuffService;
                 $genauto = $stuff->genAutoMitra();
                 $genautoKurir = $stuff->genAutoCourier();
                 $password = $stuff->encryptPassword('123456');
-                $now = Carbon::now(); 
+                $now = Carbon::now();
                 if ($request->type_f == "mitra") {
                     $this->registerRepository->updateGenerateDataMitra($request, $genauto, $now, $password);
                     $this->registerRepository->generateUserLogin($request, $genauto, $now, $password);
-                }else if($request->type_f == "driver"){
+                } else if ($request->type_f == "driver") {
                     $this->registerRepository->updateGenerateDataKurir($request, $genautoKurir, $now, $password);
                     $this->registerRepository->generateUserLogin($request, $genautoKurir, $now, $password);
-                } 
+                }
                 $this->registerRepository->updateFinishData($request, $genauto);
-                DB::commit();  
+                DB::commit();
                 if ($request->type_f == "mitra") {
                     $details = $request;
                     Mail::to($request->emails_f)->send(new \App\Mail\FinishedMitraEmail($details));
-                } 
+                }
                 if ($request->type_f == "driver") {
                     $details = $request;
                     Mail::to($request->emails_f)->send(new \App\Mail\FinishedCourierEmail($details));
                 }
-                
+
                 return redirect('dashboard/verification')->with('success', 'Registration Member Mitra/Kurir Complete !');
             }
         } catch (Exception $e) {
@@ -200,5 +199,5 @@ class RegisterService extends Controller
             Log::info($e->getMessage());
             return redirect('dashboard/verification')->with('failed', $e->getMessage());
         }
-    } 
+    }
 }
