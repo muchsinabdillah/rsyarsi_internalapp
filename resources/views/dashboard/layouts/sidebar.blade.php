@@ -26,6 +26,7 @@
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
                                             <a href="/dashboard/userlogin" class="nk-menu-link"><span class="nk-menu-text">Entry User </span></a>
+                                            <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Unit</span></a>
                                         </li> 
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item --> 
@@ -39,7 +40,7 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Master</span></a>
+                                            
                                             <a href="/dashboard/indikatormutu" class="nk-menu-link"><span class="nk-menu-text">Entry Master</span></a>
                                         </li> 
                                     </ul><!-- .nk-menu-sub -->
@@ -51,8 +52,7 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Harian IMUT</span></a>
-                                            <a href="/dashboard/indikatormutu" class="nk-menu-link"><span class="nk-menu-text">Monitoring Imut</span></a>
+                                            <a href="/dashboard/trsindikatormutu" class="nk-menu-link"><span class="nk-menu-text">Entry Harian IMUT</span></a> 
                                         </li> 
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->

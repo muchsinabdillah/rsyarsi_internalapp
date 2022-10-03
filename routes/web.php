@@ -114,8 +114,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('dashboard/userlogin/view/{id}', [UserController::class, 'show']);
         Route::post('dashboard/userlogin/update', [UserController::class, 'update']);
 
-        
-
         // Register Verification
         Route::get('dashboard/verification', [RegisterController::class, 'index']);
         Route::get('dashboard/verificationFinish', [RegisterController::class, 'history']);
