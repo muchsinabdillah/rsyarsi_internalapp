@@ -26,6 +26,7 @@
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
                                 <a href="/dashboard/userlogin" class="nk-menu-link"><span class="nk-menu-text">Entry User </span></a>
+                                <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Unit</span></a>
                             </li> 
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item --> 
@@ -39,7 +40,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Master</span></a>
+                                
                                 <a href="/dashboard/indikatormutu" class="nk-menu-link"><span class="nk-menu-text">Entry Master</span></a>
                             </li> 
                         </ul><!-- .nk-menu-sub -->
@@ -47,28 +48,27 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                            <span class="nk-menu-text">Entry Transaksi</span>
+                            <span class="nk-menu-text">Entri Transaksi</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Harian IMUT</span></a>
-                                <a href="/dashboard/indikatormutu" class="nk-menu-link"><span class="nk-menu-text">Monitoring Imut</span></a>
+                                <a href="/dashboard/trsindikatormutu" class="nk-menu-link"><span class="nk-menu-text">Entry Harian IMUT</span></a> 
                             </li> 
                         </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
+                    </li><!-- .nk-menu-item --> 
+                    
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">LogBook</h6>
                     </li><!-- .nk-menu-heading -->
-
-                    <!-- Entri Logbook Harian-->
-                    <li class="nk-menu-item has-sub">
+                     <!-- Entri Logbook Harian-->
+                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                            <span class="nk-menu-text">Entry LogBook Harian</span>
+                            <span class="nk-menu-text">Master Data</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/dashboard/logbookpegawai" class="nk-menu-link"><span class="nk-menu-text">Entry Data</span></a> 
+                                <a href="/dashboard/logbookpegawai" class="nk-menu-link"><span class="nk-menu-text">Entry Master LogBook</span></a> 
                             </li> 
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
