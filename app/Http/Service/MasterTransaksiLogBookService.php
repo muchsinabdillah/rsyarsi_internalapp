@@ -50,14 +50,14 @@ class MasterTransaksiLogBookService extends Controller
                     $this->mstrTransaksiLogbook->createTransaksiLogBookToHeaders($request);
                 }
                 DB::commit();
-                return redirect('dashboard/transactionLogbook/create')->with('success', 'Data Berhasil ditambahkan ! ');
+                return redirect('dashboard/transactionLogbook/create')->with('success', 'Data Berhasil Ditambahkan ! ');
             } else {
                 return redirect('dashboard/transactionLogbook/create')->with('failed', 'Tanggal Harus Hari Ini atau Sebelumnya !');
             }
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
-            return redirect('dashboard/transactionLogbook/create')->with('failed', 'Data Gagal ditambahkan !' . $e->getMessage());
+            return redirect('dashboard/transactionLogbook/create')->with('failed', 'Data Gagal Ditambahkan !' . $e->getMessage());
         }
     }
     public function UpdateLogBook(Request $request)
@@ -73,7 +73,7 @@ class MasterTransaksiLogBookService extends Controller
             // $this->mstrTransaksiLogbook->UpdateTransaksiLogBookToHeaders($request);
             $this->mstrTransaksiLogbook->UpdateLogBook($request);
             DB::commit();
-            return redirect('dashboard/transactionLogbook/view/' . $request->ID)->with('success', 'Data Berhasil diedit !');
+            return redirect('dashboard/transactionLogbook/view/' . $request->ID)->with('success', 'Data Berhasil Diedit !');
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());

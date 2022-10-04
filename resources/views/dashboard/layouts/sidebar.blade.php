@@ -25,8 +25,10 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/dashboard/userlogin" class="nk-menu-link"><span class="nk-menu-text">Entry User </span></a>
-                                <a href="/dashboard/indikatormutuunit" class="nk-menu-link"><span class="nk-menu-text">Entry Unit</span></a>
+                                <a href="/dashboard/userentry" class="nk-menu-link"><span class="nk-menu-text">Entry User</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="/dashboard/unitentry" class="nk-menu-link"><span class="nk-menu-text">Entry Unit</span></a>
                             </li> 
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item --> 
