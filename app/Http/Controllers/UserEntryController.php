@@ -19,7 +19,8 @@ class UserEntryController extends Controller
     {
         //
         return view('dashboard.userentry.index', [
-            'posts' => userentry::latest()->paginate(50)->withQueryString()
+            'posts' => userentry::latest()->paginate(50)->withQueryString(),
+            'postsss' => unitentry::latest()->paginate(50)->withQueryString()
         ]);
     }
 

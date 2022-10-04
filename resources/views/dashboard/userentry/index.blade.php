@@ -39,7 +39,10 @@
                           <tr>
                               <td>{{  $post->id }}</td>
                               <td>{{  $post->name }}</td> 
-                              <td>{{  $post->Unit }}</td>
+                              @foreach ($postsss as $postt)
+                                <?php if($postt['ID'] != $post->Unit) continue ?>
+                                <td>{{  $postt['Nama_Unit'] }}</td>
+                              @endforeach
                               <td>
                                   <a href="/dashboard/userentry/view/{{ $post->id }}" class="btn btn-sm btn-info"><i class="icon bi bi-eye"></i></a>
                               </td> 
