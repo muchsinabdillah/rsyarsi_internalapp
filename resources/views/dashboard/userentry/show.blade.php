@@ -76,16 +76,20 @@
                                 <select class="form-select" name="Unit" id="Unit"> 
                                     @foreach($postsss as $postt)
                                         <?php 
+                                        
                                         if($postt['ID'] == $userEntry->Unit){
                                             $z = $postt['Nama_Unit'];
                                             $s= $postt['ID'];
                                         }
-                                        ?>
+                                        ?>  
                                     @endforeach
                                     <option value="{{ $s }}" >{{ $z }}</option>
                                     @foreach ($postsss as $postt)
-                                        <?php if($z == $postt['Nama_Unit']) continue ?>
-                                        <option value= "{{ $postt['ID'] }}" >{{ $postt['Nama_Unit'] }} </option>
+                                        <?php if($z != $postt['Nama_Unit']) { ?>
+                                            <?php if(0 != $postt['ID']) { ?>
+                                            <option value= "{{ $postt['ID'] }}" >{{ $postt['Nama_Unit'] }} </option>
+                                        <?php } ?>
+                                        <?php } ?>
                                     @endforeach
                                 </select> 
                             </div>

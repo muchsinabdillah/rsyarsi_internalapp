@@ -65,6 +65,7 @@
                                 <select class="form-select" name="Unit" id="Unit"> 
                                     <option value="" >-- PILIH --</option> 
                                     @foreach ($postsss as $postt)
+                                    <?php if($postt['ID'] == 0) continue ?>
                                     <option value= "{{ $postt['ID'] }}" >{{ $postt['Nama_Unit'] }} </option> 
                                     @endforeach     
                                 </select> 
