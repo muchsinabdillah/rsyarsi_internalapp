@@ -46,7 +46,7 @@
                         <label for="Nama_LogBook" class="form-label">Nama Logbook </label> 
                             <div class="form-control-wrap">
                                 <input type="text" class="form-control @error('Nama_LogBook') is-invalid @enderror " id="Nama_LogBook"
-                                name="Nama_LogBook" autocomplete="off"   autofocus  value="{{  $mstrlogbook->Nama_LogBook }}"> 
+                                name="Nama_LogBook" autocomplete="off"  autofocus  value="{{  $mstrlogbook->Nama_LogBook }}"> 
                                 @error('Nama_LogBook') 
                                     <div class="invalid-feedback">
                                         {{ $message }}
