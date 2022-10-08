@@ -32,7 +32,7 @@
                          <label for="ID" class="form-label">ID</label> 
                             <div class="form-control-wrap">
                                 <input type="text" class="form-control @error('ID') is-invalid @enderror " id="ID"
-                                name="ID" readonly autocomplete="off" value="{{  $mstrTransaksiLogbook->ID }}"> 
+                                name="ID" readonly autocomplete="off" readonly value="{{  $mstrTransaksiLogbook->ID }}"> 
                                 @error('ID') 
                                     <div class="invalid-feedback">
                                         {{ $message }}

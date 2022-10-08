@@ -40,11 +40,11 @@ class MasterLogBookService extends Controller
             DB::beginTransaction();
             $this->mstrLogBook->createLogBook($request);
             DB::commit();
-            return redirect('dashboard/logbookpegawai/create')->with('success', 'Data Berhasil ditambahkan ! ');
+            return redirect('dashboard/logbookpegawai/create')->with('success', 'Data Berhasil Ditambahkan ! ');
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
-            return redirect('dashboard/logbookpegawai/create')->with('failed', 'Data Gagal ditambahkan !' . $e->getMessage());
+            return redirect('dashboard/logbookpegawai/create')->with('failed', 'Data Gagal Ditambahkan !' . $e->getMessage());
         }
     }
     public function updateLogBook(Request $request)
@@ -60,7 +60,7 @@ class MasterLogBookService extends Controller
             DB::beginTransaction();
             $this->mstrLogBook->UpdateLogBook($request);
             DB::commit();
-            return redirect('dashboard/logbookpegawai/view/' . $request->ID)->with('success', 'Data Berhasil diedit !');
+            return redirect('dashboard/logbookpegawai/view/' . $request->ID)->with('success', 'Data Berhasil Diedit !');
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());

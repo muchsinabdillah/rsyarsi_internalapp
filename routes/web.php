@@ -42,8 +42,8 @@ use App\Http\Controllers\TransactionCourierCompleteController;
 use App\Http\Controllers\TransaksiIndikatorMutuController;
 use App\Http\Controllers\LogBookPegawaiController;
 use App\Http\Controllers\TransactionLogBookController;
-use App\Http\Controllers\TransaksiLogBookHeadersController;
-use App\Http\Controllers\TransaksiLogBookDetailsController;
+use App\Http\Controllers\UserEntryController;
+use App\Http\Controllers\UnitEntryController;
 use App\Http\Controllers\FormListLogBookController;
 use Illuminate\Routing\PendingResourceRegistration;
 
@@ -149,6 +149,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('dashboard/transactionLogbook/view/{id}', [TransactionLogBookController::class, 'show']);
         Route::post('dashboard/transactionLogbook/prosesCreate', [TransactionLogBookController::class, 'store']);
         Route::post('dashboard/transactionLogbook/prosesUpdate', [TransactionLogBookController::class, 'update']);
+
+        // User Entry
+        Route::get('dashboard/userentry', [UserEntryController::class, 'index']);
+        Route::get('dashboard/userentry/checkSlug', [UserEntryController::class, 'checkSlug']);
+        Route::get('dashboard/userentry/create', [UserEntryController::class, 'create']);
+        Route::get('dashboard/userentry/view/{id}', [UserEntryController::class, 'show']);
+        Route::post('dashboard/userentry/prosesCreate', [UserEntryController::class, 'store']);
+        Route::post('dashboard/userentry/prosesUpdate', [UserEntryController::class, 'update']);
+
+        // Unit Entry
+        Route::get('dashboard/unitentry', [UnitEntryController::class, 'index']);
+        Route::get('dashboard/unitentry/checkSlug', [UnitEntryController::class, 'checkSlug']);
+        Route::get('dashboard/unitentry/create', [UnitEntryController::class, 'create']);
+        Route::get('dashboard/unitentry/view/{id}', [UnitEntryController::class, 'show']);
+        Route::post('dashboard/unitentry/prosesCreate', [UnitEntryController::class, 'store']);
+        Route::post('dashboard/unitentry/prosesUpdate', [UnitEntryController::class, 'update']);
     });
     // route 
     // Route::group(['middleware' => ['cek_login:perwakilan']], function () {

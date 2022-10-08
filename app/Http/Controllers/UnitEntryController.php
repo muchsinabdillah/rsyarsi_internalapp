@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repository\MasterTransaksiLogBookRepositoryImpl;
-use App\Http\Service\MasterTransaksiLogBookService;
-use App\Models\masterloogbook;
-use App\Models\transaksilogbookheader;
+use App\Http\Repository\UnitEntryRepositoryImpl;
+use App\Http\Service\UnitEntryService;
+use App\Models\unitentry;
 use Illuminate\Http\Request;
 
-class TransactionLogBookController extends Controller
+class UnitEntryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,8 @@ class TransactionLogBookController extends Controller
     public function index()
     {
         //
-        return view('dashboard.masterdata.transaksiLogBook.index', [
-            'posts' => transaksilogbookheader::latest()->paginate(30)->withQueryString(),
-            'postss' => masterloogbook::latest()->paginate(30)->withQueryString(),
+        return view('dashboard.unitentry.index', [
+            'posts' => unitentry::latest()->paginate(50)->withQueryString()
         ]);
     }
 
@@ -32,8 +30,8 @@ class TransactionLogBookController extends Controller
     public function create()
     {
         //
-        return view('dashboard.masterdata.transaksiLogBook.create', [
-            'postss' => masterloogbook::latest()->paginate(30)->withQueryString()
+        return view('dashboard.unitentry.create', [
+            'postss' => unitentry::latest()->paginate(50)->withQueryString()
         ]);
     }
 
@@ -46,9 +44,9 @@ class TransactionLogBookController extends Controller
     public function store(Request $request)
     {
         //
-        $mstrTransaksiLogBookRepository = new MasterTransaksiLogBookRepositoryImpl();
-        $registerService = new MasterTransaksiLogBookService($mstrTransaksiLogBookRepository);
-        $reg =  $registerService->createTransaksiLogBook($request);
+        $unitentryRepository = new UnitEntryRepositoryImpl();
+        $registerService = new UnitEntryService($unitentryRepository);
+        $reg =  $registerService->createUnitEntry($request);
         return $reg;
     }
 
@@ -61,11 +59,11 @@ class TransactionLogBookController extends Controller
     public function show($id)
     {
         //
-        $fasRepository = new MasterTransaksiLogBookRepositoryImpl();
-        $fasService = new MasterTransaksiLogBookService($fasRepository);
+        $unitentryRepository = new UnitEntryRepositoryImpl();
+        $fasService = new UnitEntryService($unitentryRepository);
         $dtcoe =  $fasService->getDatabyId($id);
-        return view('dashboard.masterdata.transaksilogbook.show', [
-            'mstrTransaksiLogbook' => $dtcoe, 'postss' => masterloogbook::latest()->paginate(30)->withQueryString()
+        return view('dashboard.unitentry.show', [
+            'unitEntry' => $dtcoe, 'postss' => unitentry::latest()->paginate(50)->withQueryString()
         ]);
     }
 
@@ -91,9 +89,9 @@ class TransactionLogBookController extends Controller
     public function update(Request $request)
     {
         //
-        $mstrTransaksiLogbookRepository = new MasterTransaksiLogBookRepositoryImpl();
-        $registerService = new MasterTransaksiLogBookService($mstrTransaksiLogbookRepository);
-        $reg =  $registerService->UpdateLogBook($request);
+        $unitentryRepository = new UnitEntryRepositoryImpl();
+        $registerService = new UnitEntryService($unitentryRepository);
+        $reg =  $registerService->UpdateUnitEntry($request);
         return $reg;
     }
 
